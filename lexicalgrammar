@@ -1,0 +1,111 @@
+// Lexical grammar for j--
+// Copyright 2013 Bill Campbell, Swami Iyer and Bahar Akbal-Delibas
+
+// Whitespace -- ignored
+" "|"\t"|"\n"|"\r"|"\f"
+
+// Single line comment -- ignored
+"//" {~("\n"|"\r")} ("\n"|"\r"["\n"])
+
+// Reserved words
+
+ABSTRACT			::= "abstract"
+BOOLEAN			::= "boolean" 
+BREAK			::= "break"			// added step 1
+BYTE				::= "byte"			// added step 1
+CASE				::= "case"			// added step 1
+CATCH			::= "catch"			// added step 1
+CHAR				::= "char" 
+CLASS			::= "class" 
+CONST			::= "const"			// added step 1
+CONTINUE			::= "continue"		// added step 1
+DEFAULT			::= "default"		// added step 1
+DO				::= "do"				// added step 1
+DOUBLE			::= "double"			// added step 1
+ELSE				::= "else" 
+EXTENDS			::= "extends" 
+FALSE			::= "false" 
+FINAL			::= "final"			// added step 1 
+FINALLY			::= "finally"			// added step 1 
+FLOAT			::= "float"			// added step 1
+FOR				::= "for"			// added step 1
+GOTO				::= "goto"			// added step 1
+IF				::= "if" 
+IMPLEMENTS		::= "implements"		// added step 1
+IMPORT			::= "import" 
+INSTANCEOF		::= "instanceof" 
+INT				::= "int" 
+INTERFACE		::= "interface"		// added step 1
+LONG				::= "long"			// added step 1
+NATIVE			::= "native"			// added step 1
+NEW				::= "new" 
+NULL				::= "null" 
+PACKAGE			::= "package" 
+PRIVATE			::= "private" 
+PROTECTED		::= "protected" 
+PUBLIC			::= "public" 
+RETURN			::= "return" 
+SHORT			::= "short"			// added step 1
+STATIC			::= "static" 
+STRICTFP			::= "strictfp"		// added step 1
+SUPER			::= "super" 
+SWITCH			::= "switch"			// added step 1
+SYNCHRONIZED		::= "synchronized"	// added step 1
+THIS				::= "this" 
+THROW			::= "throw"			// added step 1
+THROWS			::= "throws"			// added step 1
+TRANSIENT		::= "transient"		// added step 1
+TRUE				::= "true" 
+TRY				::= "try"			// added step 1
+VOID				::= "void" 
+VOLATILE			::= "volatile"		// added step 1
+WHILE			::= "while" 
+    
+// Operators
+ASSIGN		::= "="
+BINLSHIFT	::= "<<"			//added Step 0
+BINRSHIFT	::= ">>"			//added Step 0
+BITAND		::= "&"			//added Step 0
+BITOR		::= "|"			//added Step 0
+BITXOR		::= "^"			//added Step 0
+DEC			::= "--"			//added Step 1
+DIV			::= "/"			//added Step 0
+EQUAL       ::= "=="
+GT          ::= ">"
+INC         ::= "++"
+LAND        ::= "&&"
+LOGRSHIFT	::= ">>>"		//added Step 0
+LE          ::= "<="
+LNOT        ::= "!"
+LT			::= "<"			//added Step 1
+MINUS       ::= "-"
+PLUS        ::= "+"
+PLUS_ASSIGN ::= "+="
+REM			::= "%"			//added Step 0
+STAR        ::= "*"
+
+// Separators
+COMMA       ::= ","
+DOT         ::= "."
+LBRACK      ::= "["
+LCURLY      ::= "{"
+LPAREN      ::= "("
+RBRACK      ::= "]"
+RCURLY      ::= "}"
+RPAREN      ::= ")"
+SEMI        ::= ";"
+ COLON		::=":"			// added step 1
+
+// Identifiers
+IDENTIFIER ::= ("a"-"z"|"A"-"Z"|"_"|"$") {"a"-"z"|"A"-"Z"|"_"|"0"-"9"|"$"}
+
+// Literals
+INT_LITERAL    ::= "0" | ("1"-"9") {"0"-"9"}
+ESC            ::= "\\" ("n"|"r"|"t"|"b"|"f"|"'"|"\""|"\\")
+STRING_LITERAL ::= "\"" {ESC | ~("\""|"\\"|"\n"|"\r")} "\""
+CHAR_LITERAL   ::= "'" (ESC | ~("'"|"\n"|"\r"|"\\")) "'"
+
+// End of file
+EOF            ::= "<end of file>"
+
+
